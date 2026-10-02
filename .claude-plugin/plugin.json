@@ -1,0 +1,31 @@
+{
+  "name": "cache-timer",
+  "version": "0.1.0",
+  "description": "Status line countdown until the main thread's prompt cache expires",
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "ttl": {
+      "type": "string",
+      "title": "Prompt cache TTL",
+      "description": "Cache lifetime the session's requests use (1h on subscription plans, 5m on API-key billing)",
+      "default": "1h",
+      "options": [
+        "1h",
+        "5m"
+      ]
+    },
+    "warnSeconds": {
+      "type": "number",
+      "title": "Warn when this many seconds remain",
+      "description": "Below this the status turns into a warning and a toast fires once",
+      "default": 120
+    }
+  },
+  "author": {
+    "name": "Ricardo Sawir",
+    "url": "https://github.com/sawirricardo"
+  },
+  "homepage": "https://github.com/sawirricardo/claude-cache-timer",
+  "repository": "https://github.com/sawirricardo/claude-cache-timer",
+  "license": "MIT"
+}

@@ -2,10 +2,10 @@
 
 A Claude Code plugin that shows how long until the main thread's prompt cache expires, in the status line:
 
-- `cache: 52:10`: time left
-- `cache: 1:45 left!`: under the warning threshold (plus a one-time toast)
-- `cache: cold`: expired; the next message re-writes the whole cache
-- `cache: -`: no request yet, or after `/clear`
+- `🟢 cache: 52:10`: time left
+- `🟡 cache: 1:45 left`: under the warning threshold (plus a one-time toast)
+- `🔴 cache: cold`: expired; the next message re-writes the whole cache
+- `⚪ cache: -`: no request yet, or after `/clear`
 
 Each main-thread model request resets the timer; subagent requests don't (they don't keep the main cache warm).
 

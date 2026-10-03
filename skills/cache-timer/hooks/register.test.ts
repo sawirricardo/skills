@@ -20,23 +20,23 @@ test('counts down from the last main-thread request', { options: { ttl: '5m', wa
   })
 
   await $.session.start({ cwd: '/', surface: 'terminal', isInteractive: true })
-  expect(statuses.at(-1)).toBe('cache: -')
+  expect(statuses.at(-1)).toBe('⚪ cache: -')
 
   await step($)
-  expect(statuses.at(-1)).toBe('cache: 5:00')
+  expect(statuses.at(-1)).toBe('🟢 cache: 5:00')
 
   await clock.advance(250_000)
-  expect(statuses.at(-1)).toBe('cache: 0:50 left!')
+  expect(statuses.at(-1)).toBe('🟡 cache: 0:50 left')
   expect(toasts).toEqual(['Prompt cache expires in 1:00'])
 
   // a subagent request does not refresh the main thread's cache
   await step($, 'agent-1')
   await clock.advance(1_000)
-  expect(statuses.at(-1)).toBe('cache: 0:49 left!')
+  expect(statuses.at(-1)).toBe('🟡 cache: 0:49 left')
 
   await clock.advance(60_000)
-  expect(statuses.at(-1)).toBe('cache: cold')
+  expect(statuses.at(-1)).toBe('🔴 cache: cold')
 
   await step($)
-  expect(statuses.at(-1)).toBe('cache: 5:00')
+  expect(statuses.at(-1)).toBe('🟢 cache: 5:00')
 })

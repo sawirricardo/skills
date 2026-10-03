@@ -16,17 +16,17 @@ function fmt(ms: number) {
 
 async function tick($: EngineInterface, ttlMs: number, warnMs: number) {
   const mark = await read($, last)
-  if (!mark) return $.ui.status('cache: -')
+  if (!mark) return $.ui.status('⚪ cache: -')
   const left = mark.at + ttlMs - (await $.clock.now())
-  if (left <= 0) return $.ui.status('cache: cold')
+  if (left <= 0) return $.ui.status('🔴 cache: cold')
   if (left <= warnMs) {
     if (!(await read($, warned))) {
       await update($, warned, () => true)
       $.ui.toast(`Prompt cache expires in ${fmt(left)}`)
     }
-    return $.ui.status(`cache: ${fmt(left)} left!`)
+    return $.ui.status(`🟡 cache: ${fmt(left)} left`)
   }
-  $.ui.status(`cache: ${fmt(left)}`)
+  $.ui.status(`🟢 cache: ${fmt(left)}`)
 }
 
 export const register: Register = (on, options) => {

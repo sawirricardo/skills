@@ -6,10 +6,10 @@ description: 'Explains the cache-timer status line countdown (prompt cache expir
 The cache-timer plugin in this folder shows a status line countdown until the main thread's prompt cache expires. Its hooks live in `hooks/register.ts` and load because this folder has a `.claude-plugin/plugin.json`.
 
 Status line values:
-- `cache: 52:10`: time left before the cache expires
-- `cache: 1:45 left!`: under the warning threshold (a toast also fires once)
-- `cache: cold`: expired; the next message re-writes the whole cache at full input cost
-- `cache: -`: no request yet in this session, or after `/clear`
+- `🟢 cache: 52:10`: time left before the cache expires
+- `🟡 cache: 1:45 left`: under the warning threshold (a toast also fires once)
+- `🔴 cache: cold`: expired; the next message re-writes the whole cache at full input cost
+- `⚪ cache: -`: no request yet in this session, or after `/clear`
 
 Each main-thread model request resets the timer. Subagent requests don't.
 

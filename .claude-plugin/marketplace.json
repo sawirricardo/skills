@@ -1,11 +1,11 @@
 {
-  "name": "claude-cache-timer",
-  "description": "Prompt cache countdown for Claude Code",
+  "name": "sawirricardo",
+  "description": "Ricardo Sawir's skills and plugins for Claude Code",
   "owner": { "name": "Ricardo Sawir", "url": "https://github.com/sawirricardo" },
   "plugins": [
     {
       "name": "cache-timer",
-      "source": ".",
+      "source": "./skills/cache-timer",
       "description": "Status line countdown until the main thread's prompt cache expires"
     }
   ]

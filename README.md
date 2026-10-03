@@ -1,52 +1,35 @@
-# cache-timer
+# Skills
 
-A Claude Code plugin that shows how long until the main thread's prompt cache expires, in the status line:
+[![skills.sh](https://skills.sh/b/sawirricardo/skills)](https://skills.sh/sawirricardo/skills)
 
-- `cache: 52:10`: time left
-- `cache: 1:45 left!`: under the warning threshold (plus a one-time toast)
-- `cache: cold`: expired; the next message re-writes the whole cache
-- `cache: -`: no request yet, or after `/clear`
-
-Each main-thread model request resets the timer; subagent requests don't (they don't keep the main cache warm).
+Skills and plugins for Claude Code and other coding agents.
 
 ## Install
 
-**From the marketplace** (gets updates via `/plugin`):
+All skills:
 
 ```sh
-claude plugin marketplace add sawirricardo/claude-cache-timer
-claude plugin install cache-timer@claude-cache-timer
+npx skills@latest add sawirricardo/skills
 ```
 
-**With [skills.sh](https://skills.sh)** (installs into `~/.claude/skills/cache-timer`):
+One skill:
 
 ```sh
-npx skills add sawirricardo/claude-cache-timer -a claude-code -g
+npx skills@latest add sawirricardo/skills --skill cache-timer
 ```
 
-**Or clone into your skills folder** (loads every session as `cache-timer@skills-dir`, [docs](https://code.claude.com/docs/en/plugins/create#scaffold-a-plugin-that-loads-every-session)):
+Claude Code plugins are also available through the plugin marketplace:
 
 ```sh
-git clone https://github.com/sawirricardo/claude-cache-timer ~/.claude/skills/cache-timer
+claude plugin marketplace add sawirricardo/skills
+claude plugin install cache-timer@sawirricardo
 ```
 
-Use one method, not several. The skills.sh and clone installs load every session as `cache-timer@skills-dir`; the root `SKILL.md` also adds a `/cache-timer` skill that explains the status line. Run `/reload-plugins` to load it in an open session.
+## Skills
 
-## Config
-
-In `/config` (cache-timer rows), or `/plugin configure cache-timer`:
-
-- `ttl`: `1h` (default, subscription plans) or `5m` (API-key billing). The plugin can't detect which your account uses.
-- `warnSeconds`: when the warning kicks in (default 120).
-
-## Develop
-
-```sh
-claude plugin validate .
-claude plugin test .
-```
-
-Built on Claude Code's function-hooks API (`hooks/register.ts`), tested on 2.1.288. That API is early access and may change.
+| Skill | What it does |
+| --- | --- |
+| [cache-timer](skills/cache-timer) | Claude Code status line countdown until the prompt cache expires (plugin with hooks) |
 
 ## License
 

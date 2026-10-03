@@ -18,13 +18,19 @@ claude plugin marketplace add sawirricardo/claude-cache-timer
 claude plugin install cache-timer@claude-cache-timer
 ```
 
+**With [skills.sh](https://skills.sh)** (installs into `~/.claude/skills/cache-timer`):
+
+```sh
+npx skills add sawirricardo/claude-cache-timer -a claude-code -g
+```
+
 **Or clone into your skills folder** (loads every session as `cache-timer@skills-dir`, [docs](https://code.claude.com/docs/en/plugins/create#scaffold-a-plugin-that-loads-every-session)):
 
 ```sh
 git clone https://github.com/sawirricardo/claude-cache-timer ~/.claude/skills/cache-timer
 ```
 
-Use one or the other. Run `/reload-plugins` to load it in an open session.
+Use one method, not several. The skills.sh and clone installs load every session as `cache-timer@skills-dir`; the root `SKILL.md` also adds a `/cache-timer` skill that explains the status line. Run `/reload-plugins` to load it in an open session.
 
 ## Config
 
